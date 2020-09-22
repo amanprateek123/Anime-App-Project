@@ -9,7 +9,6 @@ import { SearchBar } from 'react-native-elements';
 
 const App = ()=> {
   const [search,setSearch]= React.useState('')
-  const myRef = React.createRef();
   const updateSearch = (search) => {
     setSearch(search);
   };
@@ -23,14 +22,13 @@ const App = ()=> {
           uri: 'https://freepikpsd.com/wp-content/uploads/2019/10/anime-logo-png-Transparent-Images.png',
         }}
       />
-      <View style={{width:'60%',position:'absolute',top:'0',right:'0'}} >
+      <View style={{width:'60%',position:'absolute',top:15,right:0}} >
       {/* <TextInput placeholder="Search anime..." style={styles.searchInput} /> */}
        <SearchBar
        platform="default"
        placeholder="Type Here..."
        onChangeText={updateSearch}
        placeholderTextColor="white"
-       ref={myRef}
        containerStyle={{height:49,width:'100%',backgroundColor:'black'}}
        inputContainerStyle={{height:50,marginTop:-10,backgroundColor:'transparent'}}
        value={search}/>
@@ -48,7 +46,8 @@ const styles = StyleSheet.create({
      width:'100%',
      backgroundColor:'black',
      color:'white',
-     flexDirection:'row'
+     flexDirection:'row',
+     paddingTop: 15
   },
    tinyLogo: {
     width: 150,
