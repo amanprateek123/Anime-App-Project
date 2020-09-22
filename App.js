@@ -1,62 +1,64 @@
-import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, TextInput, View,Image } from 'react-native';
 import {NavigationContainer} from '@react-navigation/native'
-import {createMaterialBottomTabNavigator} from '@react-navigation/material-bottom-tabs';
+import MainTab from './Navigation/mainTab'
+import { StatusBar } from 'expo-status-bar';
+import { Icon } from 'react-native-elements'
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import { SearchBar } from 'react-native-elements';
 
-const Tab = createMaterialBottomTabNavigator()
-
-function MyTabs() {
+const App = ()=> {
+  const [search,setSearch]= React.useState('')
+  const myRef = React.createRef();
+  const updateSearch = (search) => {
+    setSearch(search);
+  };
+  console.log(search)
   return (
-    <NavigationContainer>
-       <Tab.Navigator 
-       initialRouteName="Home"
-       activeColor="red"
-       inactiveColor="white"
-       barStyle={{ backgroundColor: '#000' }}>
-      <Tab.Screen name="Home" component={HomeScreen} options={{
-          tabBarLabel: 'Home',
-          tabBarIcon: ({ color }) => (
-            <MaterialCommunityIcons name="home" color={color} size={26} />
-          ),
-        }} />
-      <Tab.Screen name="Settings" component={SettingsScreen}  options={{
-          tabBarLabel: 'Updates',
-          tabBarIcon: ({ color }) => (
-            <MaterialCommunityIcons name="bell" color={color} size={26} />
-          ),
-        }} />
-    </Tab.Navigator>
-
+    <NavigationContainer> 
+      <View style={styles.container}>
+      <Image
+        style={styles.tinyLogo}
+        source={{
+          uri: 'https://freepikpsd.com/wp-content/uploads/2019/10/anime-logo-png-Transparent-Images.png',
+        }}
+      />
+      <View style={{width:'60%',position:'absolute',top:'0',right:'0'}} >
+      {/* <TextInput placeholder="Search anime..." style={styles.searchInput} /> */}
+       <SearchBar
+       platform="default"
+       placeholder="Type Here..."
+       onChangeText={updateSearch}
+       placeholderTextColor="white"
+       ref={myRef}
+       containerStyle={{height:49,width:'100%',backgroundColor:'black'}}
+       inputContainerStyle={{height:50,marginTop:-10,backgroundColor:'transparent'}}
+       value={search}/>
+      </View>
+        </View>    
+       <MainTab/>
     </NavigationContainer>
    
   );
 }
-
-const HomeScreen = ()=>{
-return  (<View styles={styles.container} >
-    <Text styles={{textColor:'red'}} >HomeScreen</Text>
-  </View>)
-}
-
-const SettingsScreen = ()=>{
-  return (<View>
-    <Text styles={styles.text} >SettingsScreen</Text>
-  </View>)
-}
-
+export default App;
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    color:'red',
-    justifyContent: 'center',
+  container:{
+     display:'flex',
+     width:'100%',
+     backgroundColor:'black',
+     color:'white',
+     flexDirection:'row'
   },
-  text:{
-    color:'blue'
+   tinyLogo: {
+    width: 150,
+    height:50,
+    marginLeft:20
+  },
+  searchInput:{
+    padding:12,
+    fontSize:16,
+    backgroundColor:'white',
+    color:'black'
   }
-});
-
-export default MyTabs;
+})
