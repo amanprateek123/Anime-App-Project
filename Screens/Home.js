@@ -1,5 +1,6 @@
 import React from "react";
 import { View, Button, Text,Image, StyleSheet,ScrollView,SafeAreaView } from "react-native";
+import { TouchableOpacity } from "react-native-gesture-handler";
 
 const Home = ({navigation}) => {
   return (
@@ -8,12 +9,16 @@ const Home = ({navigation}) => {
       <Text style={{color:'white',marginLeft:10,marginBottom:10,fontSize:22}} >Most Trending Animes</Text>
       <SafeAreaView>
           <ScrollView horizontal >
-          <Image
+         <View >
+         <TouchableOpacity onPress={()=>navigation.navigate('Detail')} >
+         <Image
         style={styles.tinyLogo}
         source={{
           uri: 'https://m.media-amazon.com/images/M/MV5BZmQ5NGFiNWEtMmMyMC00MDdiLTg4YjktOGY5Yzc2MDUxMTE1XkEyXkFqcGdeQXVyNTA4NzY1MzY@._V1_UY1200_CR93,0,630,1200_AL_.jpg',
         }}
       />
+         </TouchableOpacity>
+         </View>
       <Image
         style={styles.tinyLogo}
         source={{
@@ -34,18 +39,21 @@ const Home = ({navigation}) => {
       />
           </ScrollView>
       </SafeAreaView>
-      {/* <Button title="Go to About Screen" onPress={()=> navigation.navigate('Setting')} /> */}
     </View>
     <View style={{marginBottom:10}} >
       <Text style={{color:'white',marginLeft:10,marginBottom:10,fontSize:22}} >New Episodes Animes</Text>
       <SafeAreaView>
           <ScrollView horizontal >
-          <Image
+          <View >
+         <TouchableOpacity onPress={()=>navigation.navigate('Detail')} >
+         <Image
         style={styles.tinyLogo}
         source={{
           uri: 'https://m.media-amazon.com/images/M/MV5BZmQ5NGFiNWEtMmMyMC00MDdiLTg4YjktOGY5Yzc2MDUxMTE1XkEyXkFqcGdeQXVyNTA4NzY1MzY@._V1_UY1200_CR93,0,630,1200_AL_.jpg',
         }}
       />
+         </TouchableOpacity>
+         </View>
       <Image
         style={styles.tinyLogo}
         source={{
@@ -66,18 +74,22 @@ const Home = ({navigation}) => {
       />
           </ScrollView>
       </SafeAreaView>
-      {/* <Button title="Go to About Screen" onPress={()=> navigation.navigate('Setting')} /> */}
+      {/* <Button title="Go to About Screen" onPress={()=> navigation.navigate('Detail')} /> */}
     </View>
     <View style={{marginBottom:10}} >
       <Text style={{color:'white',marginLeft:10,marginBottom:10,fontSize:22}} >Highest rated Animes</Text>
       <SafeAreaView>
           <ScrollView horizontal >
-          <Image
+          <View >
+         <TouchableOpacity onPress={()=>navigation.navigate('Detail')} >
+         <Image
         style={styles.tinyLogo}
         source={{
           uri: 'https://m.media-amazon.com/images/M/MV5BZmQ5NGFiNWEtMmMyMC00MDdiLTg4YjktOGY5Yzc2MDUxMTE1XkEyXkFqcGdeQXVyNTA4NzY1MzY@._V1_UY1200_CR93,0,630,1200_AL_.jpg',
         }}
       />
+         </TouchableOpacity>
+         </View>
       <Image
         style={styles.tinyLogo}
         source={{

@@ -20,15 +20,15 @@ const MainStackNavigator = () => {
   return (
     <Stack.Navigator screenOptions={screenOptionStyle} headerMode="none" >
       <Stack.Screen name="Home" component={Home} />
-      <Stack.Screen name="Setting" component={Setting} />
+      <Stack.Screen name="Detail" component={Detail} />
     </Stack.Navigator>
   );
 }
 
 const DetailStackNavigator = () => {
     return (
-      <Stack.Navigator screenOptions={screenOptionStyle} headerMode="none">
-        <Stack.Screen name="Detail" component={Detail} />
+      <Stack.Navigator screenOptions={screenOptionStyle} headerMode="none">       
+      <Stack.Screen name="Setting" component={Setting} />
       </Stack.Navigator>
     );
   }

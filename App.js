@@ -7,7 +7,7 @@ import { Icon } from 'react-native-elements'
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import { SearchBar } from 'react-native-elements';
 
-const App = ()=> {
+const App = ({navigation})=> {
   const [search,setSearch]= React.useState('')
   const updateSearch = (search) => {
     setSearch(search);
@@ -15,7 +15,7 @@ const App = ()=> {
   console.log(search)
   return (
     <NavigationContainer> 
-      <View style={styles.container}>
+      <View style={styles.container} >
       <Image
         style={styles.tinyLogo}
         source={{
