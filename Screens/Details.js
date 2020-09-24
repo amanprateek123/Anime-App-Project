@@ -1,5 +1,9 @@
 import React from "react";
-import { View, Button, Text, StyleSheet,Image,ScrollView, ImageBackground } from "react-native";
+import { View, Button, Text, StyleSheet,Image,ScrollView, Dimensions,ImageBackground, } from "react-native";
+import {WebView} from 'react-native-webview'
+import {Video} from 'expo-av'
+
+const {width,height} = Dimensions.get('window')
 
 const Detail = ({navigation}) => {
   return (
@@ -22,7 +26,7 @@ const Detail = ({navigation}) => {
         Now, Naruto is a hyperactive and knuckle-headed ninja still living in Konohagakure. Shunned because of the Kyuubi inside him, Naruto struggles to find his place in the village, while his burning desire to become the Hokage of Konohagakure leads him not only to some great new friends, but also some deadly foes.
         </Text>
       </View>
-      <View style={{padding:10}} >
+      <View style={{padding:10,borderBottom:'1px solid red'}} >
          <Text style={{color:'white',fontSize:14,marginTop:5}} >English:<Text style={{fontSize:13,marginLeft:5}} >Naruto</Text></Text>
          <Text style={{color:'white',fontSize:14,marginTop:5}} >Synonyms:<Text style={{fontSize:13,marginLeft:5}} >NARUTO</Text></Text>
          <Text style={{color:'white',fontSize:14,marginTop:5}} >Type:<Text style={{fontSize:13,marginLeft:5,color:'red'}} >TV</Text></Text>
@@ -34,7 +38,28 @@ const Detail = ({navigation}) => {
          <Text style={{color:'white',fontSize:14,marginTop:5}} >Duration:<Text style={{fontSize:13,marginLeft:5}} >23 min</Text></Text>
          <Text style={{color:'white',fontSize:14,marginTop:5}} >External Links:<Text style={{fontSize:13,marginLeft:5,color:'red'}} >AniList Kitsu AniDB AnimeNewsNetwork MyAnimeList Background</Text></Text>
       </View>
-      
+      <View >
+         <Text style={{color:'white',fontSize:23,padding:10}} >Trailer:</Text>
+         <View>
+           <WebView
+           source={{uri:'https://youtu.be/-G9BqkgZXRA'}}
+           style={styles.video}
+           javaScriptEnabled
+           />
+            {/* <Video
+           source={{ uri: 'http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4' }}
+           rate={1.0}
+           volume={1.0}
+           isMuted={false}
+           resizeMode="contain"
+           shouldPlay={false}
+           isLooping={false}
+           useNativeControls
+           style={styles.video}
+/> */}
+        
+         </View>
+      </View>
 
 
     </ScrollView>
@@ -49,6 +74,10 @@ const styles = StyleSheet.create({
        width:150,
        height:200,
        margin:'auto'
+  },
+  video:{
+    width:'100%',
+    height:height,
   }
 });
 
