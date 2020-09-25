@@ -3,16 +3,18 @@ import { View, Button, Text, StyleSheet,Image,ScrollView, Dimensions,ImageBackgr
 import {WebView} from 'react-native-webview'
 import {Video} from 'expo-av'
 import {useFonts} from 'expo-font';
+import { TouchableOpacity } from "react-native-gesture-handler";
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 const {width,height} = Dimensions.get('window')
 
 const Detail = ({navigation}) => {
-  const [loaded] = useFonts({
-    Montserrat: require('../assets/fonts/Montserrat-Regular.ttf'),
-  });
-  if (!loaded) {
-    return null;
-  }
+  // const [loaded] = useFonts({
+  //   Montserrat: require('../assets/fonts/Montserrat-Regular.ttf'),
+  // });
+  // if (!loaded) {
+  //   return null;
+  // }
   return (
     <ScrollView style={styles.center}>
       <ImageBackground source={{
@@ -24,7 +26,7 @@ const Detail = ({navigation}) => {
       <Text style={{textAlign:'center',color:'white',fontSize:23}} >Naruto</Text>
       <Text style={{textAlign:'center',color:'white',fontSize:23}} >ナルト</Text>
       </View>
-      <View style={{padding:10,borderBottom:'1px solid red'}} >
+      <View style={styles.summary} >
         <Text style={{color:'white',fontSize:23}}>Summary:</Text>
         <Text style={{color:'white',fontSize:14,}} >
         Moments prior to Naruto Uzumaki's birth, a huge demon known as the Kyuubi, the Nine-Tailed Fox, attacked Konohagakure, the Hidden Leaf Village, and wreaked havoc. In order to put an end to the Kyuubi's rampage, the leader of the village, the Fourth Hokage, sacrificed his life and sealed the monstrous beast inside the newborn Naruto.
@@ -33,17 +35,17 @@ const Detail = ({navigation}) => {
         Now, Naruto is a hyperactive and knuckle-headed ninja still living in Konohagakure. Shunned because of the Kyuubi inside him, Naruto struggles to find his place in the village, while his burning desire to become the Hokage of Konohagakure leads him not only to some great new friends, but also some deadly foes.
         </Text>
       </View>
-      <View style={{padding:10,borderBottom:'1px solid red'}} >
-         <Text style={{color:'white',fontSize:14,marginTop:5}} >English:<Text style={{fontSize:13,marginLeft:5}} >Naruto</Text></Text>
-         <Text style={{color:'white',fontSize:14,marginTop:5}} >Synonyms:<Text style={{fontSize:13,marginLeft:5}} >NARUTO</Text></Text>
-         <Text style={{color:'white',fontSize:14,marginTop:5}} >Type:<Text style={{fontSize:13,marginLeft:5,color:'red'}} >TV</Text></Text>
-         <Text style={{color:'white',fontSize:14,marginTop:5}} >Episodes:<Text style={{fontSize:13,marginLeft:5}} >220</Text></Text>
-         <Text style={{color:'white',fontSize:14,marginTop:5}} >Status:<Text style={{fontSize:13,marginLeft:5,color:'red'}} >Finished Airing</Text></Text>
-         <Text style={{color:'white',fontSize:14,marginTop:5}} >Aired:<Text style={{fontSize:13,marginLeft:5}} >Oct 03, 2002 to Feb 08, 2007</Text></Text>
-         <Text style={{color:'white',fontSize:14,marginTop:5}} >Season:<Text style={{fontSize:13,marginLeft:5,color:'red'}} >Fall 2002</Text></Text>
-         <Text style={{color:'white',fontSize:14,marginTop:5}} >Studio:<Text style={{fontSize:13,marginLeft:5}} >Studio Pierrot</Text></Text>
-         <Text style={{color:'white',fontSize:14,marginTop:5}} >Duration:<Text style={{fontSize:13,marginLeft:5}} >23 min</Text></Text>
-         <Text style={{color:'white',fontSize:14,marginTop:5}} >External Links:<Text style={{fontSize:13,marginLeft:5,color:'red'}} >AniList Kitsu AniDB AnimeNewsNetwork MyAnimeList Background</Text></Text>
+      <View style={styles.prop} >
+         <Text style={{color:'white',fontSize:14,marginTop:5}} >English:  <Text style={{fontSize:13}} >Naruto</Text></Text>
+         <Text style={{color:'white',fontSize:14,marginTop:5}} >Synonyms:  <Text style={{fontSize:13}} >NARUTO</Text></Text>
+         <Text style={{color:'white',fontSize:14,marginTop:5}} >Type:  <Text style={{fontSize:13,color:'red'}} >TV</Text></Text>
+         <Text style={{color:'white',fontSize:14,marginTop:5}} >Episodes:  <Text style={{fontSize:13}} >220</Text></Text>
+         <Text style={{color:'white',fontSize:14,marginTop:5}} >Status:  <Text style={{fontSize:13,color:'red'}} >Finished Airing</Text></Text>
+         <Text style={{color:'white',fontSize:14,marginTop:5}} >Aired:  <Text style={{fontSize:13}} >Oct 03, 2002 to Feb 08, 2007</Text></Text>
+         <Text style={{color:'white',fontSize:14,marginTop:5}} >Season:  <Text style={{fontSize:13,color:'red'}} >Fall 2002</Text></Text>
+         <Text style={{color:'white',fontSize:14,marginTop:5}} >Studio:  <Text style={{fontSize:13}} >Studio Pierrot</Text></Text>
+         <Text style={{color:'white',fontSize:14,marginTop:5}} >Duration:  <Text style={{fontSize:13}} >23 min</Text></Text>
+         <Text style={{color:'white',fontSize:14,marginTop:5}} >External Links:  <Text style={{fontSize:13,color:'red'}} >AniList Kitsu AniDB AnimeNewsNetwork MyAnimeList Background</Text></Text>
       </View>
       <View>
          <Text style={{color:'white',fontSize:23,padding:10}} >Trailer:</Text>
@@ -64,13 +66,16 @@ const Detail = ({navigation}) => {
            isLooping={false}
            useNativeControls
            style={styles.video}
-/> */}
-        
+/> */}        
          </View>
       </View>
       <View style={{display:'flex',flexDirection:'row',justifyContent:"center",marginTop:10}} >
-         <Button title="Add to Wishlisht" color="red"/>
-         <Button title="Watch Episodes"  />
+         <TouchableOpacity style={styles.btn1} >
+              <Text style={styles.txt1}>Add to WishList   <Icon name="bookmark" size={20} /> </Text>
+         </TouchableOpacity>
+         <TouchableOpacity style={styles.btn1}>
+           <Text  style={styles.txt1}>Watch Episodes    <Icon name="play" size={20}  /> </Text>
+         </TouchableOpacity>
       </View>
 
 
@@ -82,6 +87,18 @@ const styles = StyleSheet.create({
   center: {
     backgroundColor:'black',
   },
+  summary:{
+    paddingVertical:10,
+    marginHorizontal:10,
+    borderBottomColor:'red',
+    borderWidth:0.3
+  },
+  prop:{
+    paddingVertical:10,
+    marginHorizontal:10,
+    borderBottomColor:'red',
+    borderWidth:0.3
+  },
   mainImg:{
        width:150,
        height:200,
@@ -91,7 +108,23 @@ const styles = StyleSheet.create({
     width:width,
     height:200,
     backgroundColor:'black',
-  }
+  },
+  btn1: {
+      elevation: 8,
+      backgroundColor: "red",
+      borderRadius: 10,
+      paddingVertical: 10,
+      paddingHorizontal: 8,
+      marginHorizontal:20,
+      marginVertical:10
+    },
+    txt1:{
+      fontSize: 16,
+      color: "#fff",
+      fontWeight: "bold",
+      alignSelf: "center",
+      textTransform: "capitalize"
+    }
 });
 
 export default Detail;
