@@ -2,10 +2,17 @@ import React from "react";
 import { View, Button, Text, StyleSheet,Image,ScrollView, Dimensions,ImageBackground, } from "react-native";
 import {WebView} from 'react-native-webview'
 import {Video} from 'expo-av'
+import {useFonts} from 'expo-font';
 
 const {width,height} = Dimensions.get('window')
 
 const Detail = ({navigation}) => {
+  const [loaded] = useFonts({
+    Montserrat: require('../assets/fonts/Montserrat-Regular.ttf'),
+  });
+  if (!loaded) {
+    return null;
+  }
   return (
     <ScrollView style={styles.center}>
       <ImageBackground source={{
@@ -19,10 +26,10 @@ const Detail = ({navigation}) => {
       </View>
       <View style={{padding:10,borderBottom:'1px solid red'}} >
         <Text style={{color:'white',fontSize:23}}>Summary:</Text>
-        <Text style={{color:'white',fontSize:16}} >
+        <Text style={{color:'white',fontSize:14,}} >
         Moments prior to Naruto Uzumaki's birth, a huge demon known as the Kyuubi, the Nine-Tailed Fox, attacked Konohagakure, the Hidden Leaf Village, and wreaked havoc. In order to put an end to the Kyuubi's rampage, the leader of the village, the Fourth Hokage, sacrificed his life and sealed the monstrous beast inside the newborn Naruto.
         </Text>
-        <Text style={{color:'white',fontSize:16,marginTop:10}} >
+        <Text style={{color:'white',fontSize:14,marginTop:10}} >
         Now, Naruto is a hyperactive and knuckle-headed ninja still living in Konohagakure. Shunned because of the Kyuubi inside him, Naruto struggles to find his place in the village, while his burning desire to become the Hokage of Konohagakure leads him not only to some great new friends, but also some deadly foes.
         </Text>
       </View>
@@ -38,13 +45,14 @@ const Detail = ({navigation}) => {
          <Text style={{color:'white',fontSize:14,marginTop:5}} >Duration:<Text style={{fontSize:13,marginLeft:5}} >23 min</Text></Text>
          <Text style={{color:'white',fontSize:14,marginTop:5}} >External Links:<Text style={{fontSize:13,marginLeft:5,color:'red'}} >AniList Kitsu AniDB AnimeNewsNetwork MyAnimeList Background</Text></Text>
       </View>
-      <View >
+      <View>
          <Text style={{color:'white',fontSize:23,padding:10}} >Trailer:</Text>
          <View>
            <WebView
-           source={{uri:'https://youtu.be/-G9BqkgZXRA'}}
+           source={{html:'<iframe width="100%" height="500" src="https://www.youtube.com/embed/-G9BqkgZXRA" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>'}}
            style={styles.video}
            javaScriptEnabled
+           allowsFullscreenVideo={true}
            />
             {/* <Video
            source={{ uri: 'http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4' }}
@@ -59,6 +67,10 @@ const Detail = ({navigation}) => {
 /> */}
         
          </View>
+      </View>
+      <View style={{display:'flex',flexDirection:'row',justifyContent:"center",marginTop:10}} >
+         <Button title="Add to Wishlisht" color="red"/>
+         <Button title="Watch Episodes"  />
       </View>
 
 
@@ -76,8 +88,9 @@ const styles = StyleSheet.create({
        margin:'auto'
   },
   video:{
-    width:'100%',
-    height:height,
+    width:width,
+    height:200,
+    backgroundColor:'black',
   }
 });
 
